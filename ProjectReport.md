@@ -1,24 +1,14 @@
 # Project Report
 
-(Put your name here)
-
-## Markdown Tips
-
-If you are unfamiliar with MarkDown, check out 
-[the official documentation](https://guides.github.com/features/mastering-markdown/).
-
-Note that IntelliJ IDEA has a Markdown preview that you can access in 
-the upper-right of the editor. Also, since Markdown documents&mdash;like
-source code&mdash;should be human-readable, make sure you keep your lines
-short, as you can see I have done in my Markdown files.
-
-Please remove this subsection before submitting your report. 
+Jake Chappell
 
 ## Challenge #1 Complete
 
-(Explain your solution to Challenge #1. If it is not complete, change
-the subsection title above to "Incomplete" and explain how far you got
-and where you got stuck.)
+Challenge #1 discusses changing the guice configuration to ensure
+the application uses the real WikipediaQueryEngine instead of the fake. The 
+QueryEngineModule class had an instance in which the QueryEngine interface was binded 
+to FakeQueryEngine. I changed the instance of FakeQueryEngine to WikipediaQueryEngine to 
+make sure the interface binds to the real engine.
 
 ## Challenge #2 Complete
 
