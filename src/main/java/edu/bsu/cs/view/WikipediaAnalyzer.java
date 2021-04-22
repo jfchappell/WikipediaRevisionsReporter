@@ -1,6 +1,7 @@
 package edu.bsu.cs.view;
 
 import com.google.inject.Inject;
+import com.google.j2objc.annotations.ReflectionSupport;
 import edu.bsu.cs.model.QueryEngine;
 import edu.bsu.cs.model.QueryResponse;
 import edu.bsu.cs.model.Revision;
@@ -9,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -35,6 +37,10 @@ public final class WikipediaAnalyzer extends VBox {
     @Inject
     private ExecutorService executor;
 
+    @SuppressWarnings("unused")
+    @Inject
+    private Formatter formatter;
+
     public WikipediaAnalyzer() {
         queryButton.setOnAction(e -> attemptQuery());
         titleField.setOnAction(e -> attemptQuery());
@@ -58,7 +64,6 @@ public final class WikipediaAnalyzer extends VBox {
     private void runQuery(String articleTitle) {
         try {
             QueryResponse response = engine.queryRevisions(articleTitle);
-            RevisionFormatter formatter = new RevisionFormatter();
             StringBuilder stringBuilder = new StringBuilder();
             for (Revision revision : response.revisions()) {
                 String message = formatter.format(revision);

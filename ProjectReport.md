@@ -12,9 +12,16 @@ make sure the interface binds to the real engine.
 
 ## Challenge #2 Complete
 
-(Explain your solution to Challenge #2. If it is not complete, change
-the subsection title above to "Incomplete" and explain how far you got
-and where you got stuck.)
+Challenge #2 discusses making a new revision formatter that presents the information
+on revisions in a more user-friendly way, as well as incorporating it into the 
+application in a way that allows for the dependency to oppose the flow of execution. 
+I created the BetterRevisionFormatter class that presents the data in the format of 
+"User %s updated an entry at %s". This format is much more presentable and makes 
+for easy viewing. I also created the Formatter interface that is implemented by all
+formatters and injected the module created in the QueryEngineModule class that binds 
+Formatter to the BetterRevisionFormatter class in the WikipediaAnalyzer class. I also 
+created the BetterRevisionTest class, in which I wrote a few tests to validate the 
+output of the new revision formatter.
 
 ## Challenge #3 Complete
 
