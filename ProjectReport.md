@@ -25,9 +25,10 @@ output of the new revision formatter.
 
 ## Challenge #3 Complete
 
-(Explain your solution to Challenge #3. If it is not complete, change
-the subsection title above to "Incomplete" and explain how far you got
-and where you got stuck.)
+Challenge #3 discusses using java streams instead of a for loop using a string
+builder. I streamed the results to the higher order function map in order to apply
+a function to each of the elements. These elements were then joined with a java
+collector, with the joiner being "\n".
 
 ## Reflection Question #1: Functional vs OO
 

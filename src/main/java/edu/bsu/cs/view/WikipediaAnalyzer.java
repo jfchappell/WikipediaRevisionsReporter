@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.text.Normalizer;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class WikipediaAnalyzer extends VBox {
 
@@ -64,13 +66,8 @@ public final class WikipediaAnalyzer extends VBox {
     private void runQuery(String articleTitle) {
         try {
             QueryResponse response = engine.queryRevisions(articleTitle);
-            StringBuilder stringBuilder = new StringBuilder();
-            for (Revision revision : response.revisions()) {
-                String message = formatter.format(revision);
-                stringBuilder.append(message);
-                stringBuilder.append("\n");
-            }
-            outputArea.setText(stringBuilder.toString());
+            String outputStream = response.revisions().stream().map(x -> formatter.format(x)).collect(Collectors.joining("\n"));
+            outputArea.setText(outputStream);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Connection Problem");
