@@ -23,7 +23,7 @@ Formatter to the BetterRevisionFormatter class in the WikipediaAnalyzer class. I
 created the BetterRevisionTest class, in which I wrote a few tests to validate the 
 output of the new revision formatter.
 
-## Challenge #3 Complete
+## Challenge #3 Complete 
 
 Challenge #3 discusses using java streams instead of a for loop using a string
 builder. I streamed the results to the higher order function map in order to apply
@@ -32,15 +32,24 @@ collector, with the joiner being "\n".
 
 ## Reflection Question #1: Functional vs OO
 
-(Write one or more paragraphs comparing and contrasting the iterative and functional  
-approaches to string concatenation you explored in challenge #3. Which do you
-prefer, and why?)
+The iterative approach that was originally in the program used a StringBuilder,
+a mutable string of characters. I then changed this to a list
+stream and used the higher-order function map in order to return a stream of
+results that are then applied to the format that I created in 
+BetterRevisionFormatter. The StringBuilder that was originally in the program
+would take the revision responses and append them together, as well as appending
+a new line onto the end of each response. Instead, the stream will take the responses
+and map them within the format that was created in BetterRevisionFormatter,
+collect them together and join them with a new line. Both create a list of responses,
+but the stream is able to be done on a single line of code rather than requiring
+a for loop.
 
 ## Reflection Question #2: Polymorphism and Dependency Inversion
 
-(Explain how polymorphism engendered dependency inversion in this little
-application. Be clear and precise here, as this is, in part, an assessment of
-your correct use of technical terminology.
-Consider, for example, where exactly is polymorphism used?
-Where exactly is a dependency inverted?)
-
+Originally in the project, polymorphism can be seen with the QueryEngine
+interface. Any implementation where this interface is in the program shares the 
+same method signature in its definition. In the interface that I created, 
+Formatter, there has only one method defined, format. Every class that implements 
+Formatter will also define a method with the same signature. I also injected the 
+dependency into the WikipediaAnalyzer class, which allows guice to inject the 
+dependent modules at runtime.
